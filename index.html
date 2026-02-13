@@ -1,0 +1,1454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliah Zen Yap - Marketing Strategist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF7F0;
+            --charcoal: #1a1a1a;
+            --accent: #C8A882;
+            --rust: #B87750;
+            --sage: #8B9D83;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--cream);
+            color: var(--charcoal);
+            line-height: 1.6;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        /* Allow text selection in specific areas */
+        p, li, .case-challenge p, .case-solution p, .testimonial-text, input, textarea {
+            user-select: text;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E");
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-text .subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            color: var(--rust);
+            font-weight: 500;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: 2px solid var(--charcoal);
+            background: var(--charcoal);
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--charcoal);
+        }
+
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+        }
+
+        .stat {
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--rust);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        /* Decorative elements */
+        .deco-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--sage) 100%);
+            opacity: 0.1;
+            top: -200px;
+            right: -200px;
+            z-index: -1;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 8rem 2rem;
+            background: var(--charcoal);
+            color: var(--cream);
+            position: relative;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, #f5f5f5 0%, var(--cream) 100%);
+        }
+
+        .case-studies-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cases-grid {
+            display: grid;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .case-card {
+            background: white;
+            padding: 3rem;
+            border-left: 4px solid var(--rust);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .case-label {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+        }
+
+        .case-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+        }
+
+        .case-challenge,
+        .case-solution,
+        .case-results {
+            margin-bottom: 2rem;
+        }
+
+        .case-challenge h4,
+        .case-solution h4,
+        .case-results h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--rust);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .case-challenge p,
+        .case-solution p {
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--cream);
+            border: 2px solid var(--accent);
+        }
+
+        .result-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--rust);
+            line-height: 1;
+        }
+
+        .result-label {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .case-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .tool-badge {
+            padding: 0.5rem 1rem;
+            background: var(--charcoal);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .portfolio-cta {
+            margin-top: 5rem;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border: 2px solid var(--accent);
+        }
+
+        .portfolio-cta h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-cta p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent);
+            max-width: 600px;
+        }
+
+        .experience-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            gap: 3rem;
+        }
+
+        .experience-card {
+            border: 1px solid rgba(200, 168, 130, 0.2);
+            padding: 3rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .experience-card:hover {
+            border-color: var(--accent);
+            transform: translateX(1rem);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-card:hover::before {
+            transform: scaleY(1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+
+        .experience-company {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            font-size: 0.9rem;
+            color: var(--sage);
+            letter-spacing: 0.05em;
+        }
+
+        .experience-highlights {
+            list-style: none;
+        }
+
+        .experience-highlights li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .experience-highlights li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 8rem 2rem;
+            background: var(--cream);
+        }
+
+        .skills-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--rust);
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--cream);
+            border: 1px solid var(--accent);
+            font-size: 0.85rem;
+            color: var(--charcoal);
+            transition: all 0.2s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, var(--rust) 0%, var(--accent) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 2rem;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards, float 2s ease-in-out infinite;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: var(--charcoal);
+            animation: scrollLine 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollLine {
+            0%, 100% {
+                transform: scaleY(1);
+                transform-origin: top;
+            }
+            50% {
+                transform: scaleY(0.5);
+                transform-origin: top;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Education */
+        .education {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        /* Email Verification Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            max-width: 500px;
+            width: 90%;
+            border: 3px solid var(--accent);
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--charcoal);
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--charcoal);
+        }
+
+        .modal p {
+            margin-bottom: 2rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .modal-input {
+            padding: 1rem;
+            border: 2px solid var(--accent);
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--rust);
+            box-shadow: 0 0 0 3px rgba(184, 119, 80, 0.1);
+        }
+
+        .modal-submit {
+            padding: 1rem 2rem;
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .modal-submit:hover {
+            background: var(--rust);
+            transform: translateY(-2px);
+        }
+
+        .modal-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .modal-error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .modal-error.show {
+            display: block;
+        }
+
+        .modal-success {
+            color: #2e7d32;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .modal-success.show {
+            display: block;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 8rem 2rem;
+            background: var(--charcoal);
+            color: var(--cream);
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border: 1px solid rgba(200, 168, 130, 0.3);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            color: var(--accent);
+            line-height: 1;
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            border-top: 2px solid var(--accent);
+            padding-top: 1.5rem;
+        }
+
+        .author-name {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-title {
+            color: var(--sage);
+            font-size: 0.9rem;
+        }
+
+        .education-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .education-card {
+            background: var(--cream);
+            padding: 3rem;
+            border-left: 4px solid var(--rust);
+            margin-top: 2rem;
+        }
+
+        .education-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-details {
+            color: var(--rust);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .coursework {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .course-tag {
+            padding: 0.4rem 0.8rem;
+            background: white;
+            border: 1px solid var(--accent);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Hidden form for Netlify detection -->
+    <form name="resume-downloads" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="bot-field" />
+        <input type="email" name="email" />
+    </form>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="deco-circle"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Aliah Zen Yap</h1>
+                <div class="subtitle">Marketing Strategist & Digital Growth Expert</div>
+                <p>Transforming emerging brands into market leaders through data-driven strategy, multi-channel campaigns, and ROI-focused execution. Specialized in creator economy, digital analytics, and scalable growth systems.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn">Let's Connect</a>
+                    <a href="#experience" class="btn btn-secondary">View Experience</a>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Avg Revenue Growth</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3.95</div>
+                    <div class="stat-label">GPA</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Published Articles</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">18%</div>
+                    <div class="stat-label">CTR Increase</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="section-header">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-subtitle">Building growth strategies that deliver measurable results across digital channels</p>
+        </div>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">BloomStrategy Co</div>
+                        <h3 class="experience-title">Founder & Marketing Consultant</h3>
+                    </div>
+                    <div class="experience-date">2026 – Present</div>
+                </div>
+                <ul class="experience-highlights">
+                    <li>Built and executed multi-channel marketing funnels for 8+ women-owned businesses, driving average 35% revenue growth through SEO optimization, paid social campaigns, and email automation</li>
+                    <li>Developed end-to-end client onboarding and performance reporting systems using Salesforce CRM and Google Sheets, reducing reporting time by 40% while maintaining 100% data accuracy</li>
+                    <li>Managed full-cycle client relationships from discovery to campaign optimization, delivering measurable market expansion and brand scalability through data-backed growth strategies</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">Enforce The Sport</div>
+                        <h3 class="experience-title">Digital Media Specialist</h3>
+                    </div>
+                    <div class="experience-date">July 2025 – Jan 2026</div>
+                </div>
+                <ul class="experience-highlights">
+                    <li>Produced 20+ published articles, newsletters, and social media campaigns through high-volume proactive outreach and data gathering under tight editorial deadlines</li>
+                    <li>Owned content performance analytics across blogs, newsletters, and social platforms, adapting writing styles for diverse audiences and increasing average click-through rates by 18%</li>
+                    <li>Collaborated with global editorial team to ensure brand consistency and maintained 100% accuracy across all published content and performance reports</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-company">The Funny Library</div>
+                        <h3 class="experience-title">Cafe Team Lead</h3>
+                    </div>
+                    <div class="experience-date">Oct 2023 – May 2025</div>
+                </div>
+                <ul class="experience-highlights">
+                    <li>Analyzed daily sales data and customer engagement patterns to optimize promotional strategies, consistently exceeding targets by 15%</li>
+                    <li>Managed 100+ daily customer interactions and trained team of 5 on engagement protocols</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Work / Case Studies Section -->
+    <section class="case-studies">
+        <div class="case-studies-container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-subtitle">Real campaigns, measurable results, strategic execution</p>
+            </div>
+            
+            <div class="cases-grid">
+                <!-- Case Study 1 -->
+                <div class="case-card">
+                    <div class="case-label">Client Growth Strategy</div>
+                    <h3 class="case-title">Women-Owned Wellness Brand: 42% Revenue Growth in 6 Months</h3>
+                    
+                    <div class="case-challenge">
+                        <h4>The Challenge</h4>
+                        <p>Local wellness business with strong product but minimal online presence. No systematic lead generation, inconsistent social media, and reliance on word-of-mouth referrals limiting scalability.</p>
+                    </div>
+                    
+                    <div class="case-solution">
+                        <h4>My Strategy</h4>
+                        <p>Built a multi-channel funnel integrating SEO-optimized blog content, Instagram Reels strategy targeting local wellness searchers, email automation for nurture sequences, and Google Ads for high-intent keywords. Implemented Salesforce CRM to track every touchpoint from awareness to conversion.</p>
+                    </div>
+                    
+                    <div class="case-results">
+                        <h4>Results</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">42%</div>
+                                <div class="result-label">Revenue Increase</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">3.2x</div>
+                                <div class="result-label">Lead Volume</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">68%</div>
+                                <div class="result-label">Email Open Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$4.80</div>
+                                <div class="result-label">ROAS on Paid Ads</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-tools">
+                        <span class="tool-badge">SEO</span>
+                        <span class="tool-badge">Instagram Reels</span>
+                        <span class="tool-badge">Email Automation</span>
+                        <span class="tool-badge">Google Ads</span>
+                        <span class="tool-badge">Salesforce CRM</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="case-card">
+                    <div class="case-label">Content Performance Optimization</div>
+                    <h3 class="case-title">Sports Media: 18% CTR Increase Through Audience Segmentation</h3>
+                    
+                    <div class="case-challenge">
+                        <h4>The Challenge</h4>
+                        <p>Enforce The Sport needed to grow newsletter engagement and drive traffic to editorial content across diverse sports verticals (MMA, boxing, basketball). Generic content was underperforming with flat engagement metrics.</p>
+                    </div>
+                    
+                    <div class="case-solution">
+                        <h4>My Approach</h4>
+                        <p>Analyzed 3 months of Google Analytics data to identify high-performing content patterns. Developed audience personas for each sport vertical and adapted writing tone, headline formulas, and distribution timing. Implemented A/B testing on subject lines and tested different content formats (listicles vs. deep dives vs. breaking news).</p>
+                    </div>
+                    
+                    <div class="case-results">
+                        <h4>Results</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">18%</div>
+                                <div class="result-label">CTR Increase</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">20+</div>
+                                <div class="result-label">Articles Published</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">100%</div>
+                                <div class="result-label">Content Accuracy</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">2.4x</div>
+                                <div class="result-label">Avg Time on Page</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-tools">
+                        <span class="tool-badge">Google Analytics</span>
+                        <span class="tool-badge">A/B Testing</span>
+                        <span class="tool-badge">Content Strategy</span>
+                        <span class="tool-badge">Audience Segmentation</span>
+                    </div>
+                </div>
+
+                <!-- Case Study 3 -->
+                <div class="case-card">
+                    <div class="case-label">Systems & Automation</div>
+                    <h3 class="case-title">BloomStrategy Co: 40% Reporting Efficiency Gain Through CRM Optimization</h3>
+                    
+                    <div class="case-challenge">
+                        <h4>The Challenge</h4>
+                        <p>As client roster grew, manual reporting and campaign tracking became unsustainable. Needed scalable system to deliver consistent performance insights without sacrificing quality or increasing hours worked.</p>
+                    </div>
+                    
+                    <div class="case-solution">
+                        <h4>My Solution</h4>
+                        <p>Built custom Salesforce dashboards integrating data from Google Analytics, social platforms, and email marketing tools. Created automated Google Sheets templates using VLOOKUP and pivot tables for client-facing reports. Standardized KPI tracking across all accounts with weekly automated email digests.</p>
+                    </div>
+                    
+                    <div class="case-results">
+                        <h4>Results</h4>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <div class="result-number">40%</div>
+                                <div class="result-label">Time Saved on Reports</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">100%</div>
+                                <div class="result-label">Data Accuracy</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">8+</div>
+                                <div class="result-label">Clients Scaled</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">5hrs</div>
+                                <div class="result-label">Weekly Time Reclaimed</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="case-tools">
+                        <span class="tool-badge">Salesforce CRM</span>
+                        <span class="tool-badge">Google Sheets</span>
+                        <span class="tool-badge">VLOOKUP</span>
+                        <span class="tool-badge">Dashboard Design</span>
+                        <span class="tool-badge">Automation</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-cta">
+                <h3>Want to see more detailed case studies?</h3>
+                <p>I'm happy to share full campaign decks, analytics screenshots, and client testimonials during our conversation.</p>
+                <a href="#contact" class="btn">Let's Talk Strategy</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="skills-container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Proficiencies</h2>
+                <p class="section-subtitle">Strategic blend of marketing expertise, analytics, and creative execution</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Analytics & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Salesforce CRM</span>
+                        <span class="skill-tag">Google Analytics</span>
+                        <span class="skill-tag">KPI Tracking</span>
+                        <span class="skill-tag">A/B Testing</span>
+                        <span class="skill-tag">Campaign Analytics</span>
+                        <span class="skill-tag">Excel</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Digital Marketing</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">SEO Optimization</span>
+                        <span class="skill-tag">Social Media</span>
+                        <span class="skill-tag">Lead Generation</span>
+                        <span class="skill-tag">Email Marketing</span>
+                        <span class="skill-tag">Paid Media</span>
+                        <span class="skill-tag">Content Strategy</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Tools & Platforms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">WordPress</span>
+                        <span class="skill-tag">Canva</span>
+                        <span class="skill-tag">Google Sheets</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">VLOOKUP</span>
+                        <span class="skill-tag">Pivot Tables</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Core Strengths</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Strategic Planning</span>
+                        <span class="skill-tag">Data Analysis</span>
+                        <span class="skill-tag">Client Management</span>
+                        <span class="skill-tag">Content Writing</span>
+                        <span class="skill-tag">Performance Reporting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education">
+        <div class="education-content">
+            <div class="section-header">
+                <h2 class="section-title">Education & Certifications</h2>
+            </div>
+            <div class="education-card">
+                <h3>University of Nevada Las Vegas</h3>
+                <div class="education-details">Bachelor of Arts in Communication | Minor in Film & Marketing</div>
+                <p><strong>GPA: 3.95</strong> | Dean's List Honoree</p>
+                <div class="coursework">
+                    <span class="course-tag">Digital Marketing & Analytics</span>
+                    <span class="course-tag">Marketing Communications (IMC)</span>
+                    <span class="course-tag">Public Relations Writing</span>
+                    <span class="course-tag">Leadership & Team Collaboration</span>
+                    <span class="course-tag">Media Ethics</span>
+                </div>
+            </div>
+            <div class="education-card">
+                <h3>Social Media Management Certification</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <h2 class="section-title">What Clients Say</h2>
+                <p class="section-subtitle">Real feedback from real partnerships</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">Aliah transformed our entire digital presence. Her strategic approach to SEO and social media didn't just increase our visibility - it brought us the right customers. Revenue up 42% in six months, and she delivered every milestone on time.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Sarah Chen</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">What sets Aliah apart is her ability to translate data into action. She doesn't just report numbers - she tells you what they mean and what to do next. The Salesforce dashboards she built saved us hours every week and gave us clarity we never had before.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Maria Rodriguez</div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="quote-mark">"</div>
+                    <p class="testimonial-text">Aliah's content strategy completely changed how we connect with our audience. She understands what resonates, adapts quickly, and consistently delivers work that exceeds expectations. A true professional who genuinely cares about results.</p>
+                    <div class="testimonial-author">
+                        <div class="author-name">Jennifer Liu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2>Let's Create Something Great</h2>
+            <p>Ready to drive growth for your next project. Open to marketing roles, consulting opportunities, and collaborative partnerships.</p>
+            <div class="contact-links">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=aliahzenyap@gmail.com&su=Connecting%20Regarding%20Opportunities" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    📧 Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/aliah-zy05/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                    💼 LinkedIn
+                </a>
+                <a href="#" class="contact-link" id="resumeBtn">
+                    📄 Download Resume
+                </a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">Las Vegas, Nevada</p>
+        </div>
+    </section>
+
+    <!-- Email Verification Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h3>Verify Your Email</h3>
+            <p>To download my resume, please provide your email address. This helps me keep track of interested opportunities and potential connections!</p>
+            <form class="modal-form" id="emailForm" name="resume-downloads" method="POST" netlify netlify-honeypot="bot-field">
+                <input type="hidden" name="form-name" value="resume-downloads" />
+                <div style="display: none;">
+                    <input name="bot-field" />
+                </div>
+                <input 
+                    type="email" 
+                    id="emailInput" 
+                    name="email"
+                    class="modal-input" 
+                    placeholder="your.email@example.com" 
+                    required
+                    autocomplete="email"
+                />
+                <div class="modal-error" id="emailError">Please enter a valid email address</div>
+                <div class="modal-success" id="emailSuccess">Thank you! Your download will begin shortly...</div>
+                <button type="submit" class="modal-submit" id="submitEmail">
+                    Verify & Download Resume
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.experience-card, .skill-category, .case-card, .testimonial-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Email Verification Modal
+        const modal = document.getElementById('emailModal');
+        const resumeBtn = document.getElementById('resumeBtn');
+        const closeModal = document.getElementById('closeModal');
+        const emailForm = document.getElementById('emailForm');
+        const emailInput = document.getElementById('emailInput');
+        const emailError = document.getElementById('emailError');
+        const emailSuccess = document.getElementById('emailSuccess');
+        const submitBtn = document.getElementById('submitEmail');
+
+        // Open modal when resume button clicked
+        resumeBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.classList.add('active');
+            emailInput.focus();
+        });
+
+        // Close modal when X clicked
+        closeModal.addEventListener('click', function() {
+            modal.classList.remove('active');
+            emailForm.reset();
+            emailError.classList.remove('show');
+            emailSuccess.classList.remove('show');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                emailForm.reset();
+                emailError.classList.remove('show');
+                emailSuccess.classList.remove('show');
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+                emailForm.reset();
+                emailError.classList.remove('show');
+                emailSuccess.classList.remove('show');
+            }
+        });
+
+
+        // Handle form submission with Netlify Forms
+        emailForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            // Hide previous messages
+            emailError.classList.remove('show');
+            emailSuccess.classList.remove('show');
+            
+            // Validate email
+            if (!emailRegex.test(email)) {
+                emailError.classList.add('show');
+                emailInput.focus();
+                return;
+            }
+            
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Verifying...';
+            
+            // Prepare form data for Netlify
+            const formData = new FormData(emailForm);
+            
+            // Submit to Netlify
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(function(response) {
+                // Show success
+                emailSuccess.classList.add('show');
+                submitBtn.textContent = 'Download Starting...';
+                
+                console.log('Email saved to Netlify:', email);
+                
+                // Start download
+                setTimeout(function() {
+                    const link = document.createElement('a');
+                    link.href = 'AliahZYap_Resume1.pdf';
+                    link.download = 'AliahZYap_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // Close modal after download
+                    setTimeout(function() {
+                        modal.classList.remove('active');
+                        emailForm.reset();
+                        emailSuccess.classList.remove('show');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Verify & Download Resume';
+                    }, 1500);
+                }, 500);
+            })
+            .catch(function(error) {
+                console.error('Netlify error:', error);
+                // Still allow download even if Netlify fails
+                emailSuccess.classList.add('show');
+                submitBtn.textContent = 'Download Starting...';
+                
+                setTimeout(function() {
+                    const link = document.createElement('a');
+                    link.href = 'AliahZYap_Resume1.pdf';
+                    link.download = 'AliahZYap_Resume.pdf';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    setTimeout(function() {
+                        modal.classList.remove('active');
+                        emailForm.reset();
+                        emailSuccess.classList.remove('show');
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Verify & Download Resume';
+                    }, 1500);
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
